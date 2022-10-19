@@ -19,7 +19,7 @@
     "test": "jest --passWithNoTests",
     "test:watch": "jest --watch",
     "link": "bash .scripts/link.sh",
-    "prettier": "prettier -w src/",
+    "prettier": "prettier -w src/"
   },
   "author": "zer0-os",
   "license": "ISC",
