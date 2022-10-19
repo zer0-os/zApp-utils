@@ -1,6 +1,5 @@
 export enum Networks {
 	MAINNET = 1,
-	RINKEBY = 4,
 	GOERLI = 5,
 }
 
@@ -9,6 +8,5 @@ export enum Networks {
  */
 export const NETWORK_NAMES: Record<Networks, string> = {
 	[Networks.MAINNET]: 'Mainnet',
-	[Networks.RINKEBY]: 'Rinkeby',
 	[Networks.GOERLI]: 'Goerli',
 };
