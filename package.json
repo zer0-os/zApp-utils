@@ -20,7 +20,6 @@
     "test:watch": "jest --watch",
     "link": "bash .scripts/link.sh",
     "prettier": "prettier -w src/",
-    "publish": "cd dist && npm publish"
   },
   "author": "zer0-os",
   "license": "ISC",
