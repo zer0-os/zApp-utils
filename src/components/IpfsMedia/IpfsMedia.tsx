@@ -5,6 +5,7 @@ import {
 	getCloudinaryVideoPoster,
 	CloudinaryAssetOptions,
 	CloudinaryAssetFill,
+	getCloudinaryVideoAsImageFromIpfsUrl,
 } from '../../utils/cloudinary';
 import { getHashFromIpfsUrl } from '../../utils/ipfs';
 
@@ -13,6 +14,7 @@ import { Image, ImageProps } from '@zero-tech/zui/components/Image';
 export interface IpfsMediaProps extends ImageProps {
 	src?: string;
 	options?: CloudinaryAssetOptions;
+	asImage?: boolean;
 }
 
 const FitMap: Record<CloudinaryAssetFill, ImageProps['objectFit']> = {
@@ -20,7 +22,12 @@ const FitMap: Record<CloudinaryAssetFill, ImageProps['objectFit']> = {
 	['fill']: 'cover',
 };
 
-export const IpfsMedia = ({ src, options, ...rest }: IpfsMediaProps) => {
+export const IpfsMedia = ({
+	src,
+	options,
+	asImage,
+	...rest
+}: IpfsMediaProps) => {
 	const [hasVideoFailed, setHasVideoFailed] = useState(false);
 	const [hasImageFailed, setHasImageFailed] = useState(false);
 
@@ -30,10 +37,14 @@ export const IpfsMedia = ({ src, options, ...rest }: IpfsMediaProps) => {
 	useEffect(() => {
 		setHasImageFailed(false);
 		setHasVideoFailed(false);
-	}, [src]);
+	}, [src, asImage]);
 
 	// Not sure how to handle failed images yet, just show Image skeleton
-	if (src === undefined || (hasImageFailed && hasVideoFailed)) {
+	if (
+		src === undefined ||
+		urls === undefined ||
+		(hasImageFailed && hasVideoFailed)
+	) {
 		return <Image src={''} {...rest} />;
 	}
 
@@ -41,7 +52,7 @@ export const IpfsMedia = ({ src, options, ...rest }: IpfsMediaProps) => {
 		return (
 			<Image
 				{...rest}
-				src={urls?.image}
+				src={urls.image}
 				onError={() => {
 					setHasImageFailed(true);
 				}}
@@ -49,15 +60,28 @@ export const IpfsMedia = ({ src, options, ...rest }: IpfsMediaProps) => {
 			/>
 		);
 	} else if (!hasVideoFailed) {
-		return (
-			<video
-				{...rest}
-				poster={getCloudinaryVideoPoster(urls?.video)}
-				src={urls?.video}
-				onError={() => setHasVideoFailed(true)}
-				controls={true}
-				autoPlay={true}
-			/>
-		);
+		if (asImage) {
+			return (
+				<Image
+					{...rest}
+					src={getCloudinaryVideoAsImageFromIpfsUrl(src, options)}
+					onError={() => {
+						setHasImageFailed(true);
+					}}
+					objectFit={objectFit}
+				/>
+			);
+		} else {
+			return (
+				<video
+					{...rest}
+					poster={getCloudinaryVideoPoster(urls.video)}
+					src={urls.video}
+					onError={() => setHasVideoFailed(true)}
+					controls={true}
+					autoPlay={true}
+				/>
+			);
+		}
 	}
 };

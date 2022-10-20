@@ -87,6 +87,13 @@ export const getCloudinaryVideoUrlFromIpfsUrl = (
 	return getCloudinaryUrlFromIpfs(ipfsUrl, 'video', options);
 };
 
+export const getCloudinaryVideoAsImageFromIpfsUrl = (
+	hash: string,
+	options?: CloudinaryAssetOptions,
+) => {
+	return getCloudinaryVideoUrlFromIpfsUrl(hash, options) + '.jpg';
+};
+
 export const getCloudinaryUrls = (
 	hash: string,
 	options?: CloudinaryAssetOptions,
