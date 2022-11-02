@@ -7,3 +7,7 @@ export const getEtherscanBaseUrl = (network: Networks): string => {
 	}
 	return `https://${prefix}etherscan.io/`;
 };
+
+export const getEtherscanWalletUrl = (walletAddress: string, network: Networks): string => {
+	return getEtherscanBaseUrl(network) + '/address/' + walletAddress;
+};
