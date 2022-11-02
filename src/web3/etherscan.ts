@@ -1,13 +1,16 @@
 import { Networks, NETWORK_NAMES } from '../constants/networks';
 
-export const getEtherscanBaseUrl = (network: Networks): string => {
+export const getEtherscanBaseUrl = (chainId: Networks): string => {
 	let prefix;
-	if (network !== Networks.MAINNET) {
-		prefix = `${NETWORK_NAMES[network].toLowerCase()}.`;
+	if (chainId !== Networks.MAINNET) {
+		prefix = `${NETWORK_NAMES[chainId]?.toLowerCase()}.`;
 	}
-	return `https://${prefix}etherscan.io/`;
+	return `https://${prefix?.length ? prefix : ''}etherscan.io/`;
 };
 
-export const getEtherscanWalletUrl = (walletAddress: string, network: Networks): string => {
-	return getEtherscanBaseUrl(network) + '/address/' + walletAddress;
+export const getEtherscanWalletUrl = (
+	walletAddress: string,
+	chainId: Networks,
+): string => {
+	return getEtherscanBaseUrl(chainId) + 'address/' + walletAddress;
 };
