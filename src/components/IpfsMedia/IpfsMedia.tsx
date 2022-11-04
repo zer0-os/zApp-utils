@@ -31,7 +31,8 @@ export const IpfsMedia = ({
 	const [hasVideoFailed, setHasVideoFailed] = useState(false);
 	const [hasImageFailed, setHasImageFailed] = useState(false);
 
-	const urls = getCloudinaryUrls(getHashFromIpfsUrl(src), options);
+	const hash = getHashFromIpfsUrl(src);
+	const urls = getCloudinaryUrls(hash, options);
 	const objectFit = FitMap[options?.fit];
 
 	useEffect(() => {
@@ -75,7 +76,7 @@ export const IpfsMedia = ({
 			return (
 				<video
 					{...rest}
-					poster={getCloudinaryVideoPoster(urls.video)}
+					poster={getCloudinaryVideoPoster(hash)}
 					src={urls.video}
 					onError={() => setHasVideoFailed(true)}
 					controls={true}
