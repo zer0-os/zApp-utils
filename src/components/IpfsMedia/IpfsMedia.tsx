@@ -81,6 +81,7 @@ export const IpfsMedia = ({
 					onError={() => setHasVideoFailed(true)}
 					controls={true}
 					autoPlay={true}
+					loop
 				/>
 			);
 		}
