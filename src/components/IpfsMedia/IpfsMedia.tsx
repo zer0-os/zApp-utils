@@ -9,6 +9,7 @@ import {
 } from '../../utils/cloudinary';
 import { getHashFromIpfsUrl } from '../../utils/ipfs';
 
+import { Video } from '@zero-tech/zui/components/Video';
 import { Image, ImageProps } from '@zero-tech/zui/components/Image';
 
 export interface IpfsMediaProps extends ImageProps {
@@ -74,12 +75,11 @@ export const IpfsMedia = ({
 			);
 		} else {
 			return (
-				<video
+				<Video
 					{...rest}
 					poster={getCloudinaryVideoPoster(hash)}
 					src={urls.video}
 					onError={() => setHasVideoFailed(true)}
-					controls={true}
 					autoPlay={true}
 					loop
 				/>
