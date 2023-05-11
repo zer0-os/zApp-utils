@@ -1,6 +1,6 @@
 {
 	"name": "@zero-tech/zapp-utils",
-	"version": "0.6.2",
+	"version": "0.6.3",
 	"repository": "git@github.com:zer0-os/zApp-utils.git",
 	"scripts": {
 		"clean": "rimraf dist && npx mkdirp dist",
@@ -52,7 +52,7 @@
 	},
 	"peerDependencies": {
 		"@testing-library/react": "^11.2.6",
-		"@zero-tech/zui": "^0.21.0",
+		"@zero-tech/zui": "^0.21.1",
 		"ethers": "^5.4.0",
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2",

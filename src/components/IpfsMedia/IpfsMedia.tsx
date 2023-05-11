@@ -9,8 +9,7 @@ import {
 } from '../../utils/cloudinary';
 import { getHashFromIpfsUrl } from '../../utils/ipfs';
 
-import { Video } from '@zero-tech/zui/components/Video';
-import { Image, ImageProps } from '@zero-tech/zui/components/Image';
+import { Image, ImageProps, Video } from '@zero-tech/zui/components';
 
 export interface IpfsMediaProps extends ImageProps {
 	src?: string;
