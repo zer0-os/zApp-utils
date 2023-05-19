@@ -6,4 +6,8 @@ module.exports = {
 		'@semantic-release/npm',
 		'@semantic-release/github',
 	],
+	npm: {
+		npmPublish: false,
+		npmToken: process.env.NPM_TOKEN,
+	},
 };
