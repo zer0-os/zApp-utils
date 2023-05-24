@@ -22,6 +22,7 @@ meta.json
 .eslintcache
 .vscode
 .idea
+.npmrc
 
 npm-debug.log*
 yarn-debug.log*

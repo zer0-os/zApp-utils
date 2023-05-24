@@ -9,7 +9,6 @@
 		"build:styles": "sass src:dist",
 		"build:assets": "copyfiles -u 1 src/assets/* dist",
 		"build:config": "cp package.json dist/",
-		"build:npmrc": "cp .npmrc dist/",
 		"watch": "npm-run-all clean watch:all",
 		"watch:all": "concurrently --kill-others --names \"babel,sass,assets,config\" -c \"bgBlue.bold,bgGreen.bold,bgRed.bold,bgMagenta.bold\" \"npm run watch:scripts\" \"npm run watch:styles\" \"npm run watch:assets\" \"npm run watch:config\"",
 		"watch:scripts": "npm run build:scripts -- --watch",

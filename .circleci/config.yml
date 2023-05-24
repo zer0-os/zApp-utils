@@ -13,6 +13,9 @@ jobs:
     <<: *defaults
     steps:
       - checkout
+      - run:
+          name: Setup .npmrc
+          command: echo "//registry.npmjs.org/:_authToken=\"$NPM_TOKEN\"" > ~/.npmrc
       - node/install-packages:
           pkg-manager: npm
       - run: npm run build
@@ -38,7 +41,8 @@ workflows:
   production:
     jobs:
       - build:
-          filters: &filters-production # this yaml anchor is setting these values to "filters-production"
+          filters:
+            &filters-production # this yaml anchor is setting these values to "filters-production"
             branches:
               ignore: /.*/
             tags:
