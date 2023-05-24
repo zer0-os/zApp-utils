@@ -2,7 +2,7 @@
 
 This is a package of utilities for zApp developers. We noticed a bunch of duplicated code in each zApp, so we decided to put it in a package.
 
-<!-- Semantic Release is currently disabled - to enable, update CircleCi config.yml -->
+<!-- Semantic Release is currently disabled - to enable, update CircleCi config.yml and add release.config.js at root of project -->
 
 ## Semantic Release and Commit Messages
 This project utilizes Semantic Release to automate the release process. Semantic Release analyzes the commit history to determine the next version based on commit message conventions.
