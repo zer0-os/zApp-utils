@@ -1,6 +1,6 @@
 {
 	"name": "@zero-tech/zapp-utils",
-	"version": "0.6.7",
+	"version": "0.7.0",
 	"repository": "git@github.com:zer0-os/zApp-utils.git",
 	"scripts": {
 		"clean": "rimraf dist && npx mkdirp dist",
