@@ -30,6 +30,6 @@
   "exclude": [
     "src/**/*.test.*",
     "src/**/*.test.d.*",
-    "src/setupTests.ts"
+    "src/setup-jest.ts"
   ]
 }
